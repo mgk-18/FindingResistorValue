@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Resistor Value Detector</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .error { color: red; }
+        .result { margin-top: 20px; padding: 10px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <h1>Resistor Value Detector</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="resistor_image">Upload Resistor Image:</label><br><br>
+        <input type="file" name="resistor_image" accept="image/*" required>
+        <button type="submit">Upload and Process</button>
+    </form>
+    
+    {% if error %}
+    <div class="error">
+        <p>Error: {{ error }}</p>
+    </div>
+    {% endif %}
+    
+    {% if result %}
+    <div class="result">
+        <p><strong>Detected Bands (ordered left-to-right):</strong> {{ result.bands }}</p>
+        <p><strong>Calculated Resistance:</strong> {{ result.resistance }} Ω</p>
+    </div>
+    {% endif %}
+</body>
+</html>
